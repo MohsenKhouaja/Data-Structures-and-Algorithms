@@ -11,7 +11,7 @@ public:
         int l = 1;
         int r = n - 1;
         int mid;
-        // search for the first index <= fisrt
+        // search for the first index such as nums[index] <= fisrt
         while (l < r)
         {
             mid = (l + r) / 2;
@@ -21,7 +21,7 @@ public:
             }
             else
             {
-                l = mid+1;
+                l = mid + 1;
             }
         }
         return min(nums[r], first);
