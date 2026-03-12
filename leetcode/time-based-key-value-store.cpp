@@ -20,7 +20,8 @@ public:
         {
             return "";
         }
-        int n = mp[key].size();
+        vector<pair<string, int>>& v =mp[key];
+        int n = v.size();
         int l = 0;
         int r = n - 1;
         int mid = -1;
@@ -28,7 +29,7 @@ public:
         while (l <= r)
         {
             mid = (l + r) / 2;
-            int currentTimestamp = mp[key][mid].second;
+            int currentTimestamp = v[mid].second;
             if (currentTimestamp <= timestamp)
             {
                 l = mid + 1;
@@ -39,13 +40,13 @@ public:
                 r = mid - 1;
             }
         }
-        return (ans == -1 ? "" : mp[key][ans].first);
+        return (ans == -1 ? "" : v[ans].first);
     }
 };
 
 /**
  * Your TimeMap object will be instantiated and called as such:
  * TimeMap* obj = new TimeMap();
- * obj->set(key,mp[key]alue,timestamp);
+ * obj->set(key,value,timestamp);
  * string param_2 = obj->get(key,timestamp);
  */
