@@ -10,7 +10,7 @@ public:
     int tArr[52] = {0};
     int sArr[52] = {0};
     bool boolean = false;
-    set<pair<int, string>> substrings;
+    set<pair<int, int>> substrings;
     inline bool sIncludesT()
     {
         for (int i = 0; i < 52; i++)
@@ -55,9 +55,9 @@ public:
                     sArr[indexInAlphabet(s[l])]--;
                     l++;
                 }
-                substrings.insert(make_pair(r - l, s.substr(l - 1, r - (l - 1) + 1)));
+                substrings.insert(make_pair(r - (l - 1) + 1, l - 1));
             }
         }
-        return substrings.empty() ? "" : substrings.begin()->second;
+        return substrings.empty() ? "" : s.substr(substrings.begin()->second,substrings.begin()->first);
     }
 };
