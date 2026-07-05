@@ -15,8 +15,7 @@ struct TreeNode
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-
-class Solution
+class SolutionIterative
 {
 public:
     int maxDepth(TreeNode *root)
@@ -34,13 +33,24 @@ public:
             q.pop();
             if (current->left != nullptr)
             {
-                q.push(make_pair(current->left, depth+1));
+                q.push(make_pair(current->left, depth + 1));
             }
             if (current->right != nullptr)
             {
-                q.push(make_pair(current->right, depth+1));
+                q.push(make_pair(current->right, depth + 1));
             }
         }
         return mx;
+    }
+};
+
+class SolutionRecursive
+{
+public:
+    int maxDepth(TreeNode *root)
+    {
+        if (root == nullptr)
+            return 0;
+        return 1 + max(maxDepth(root->left), maxDepth(root->right));
     }
 };

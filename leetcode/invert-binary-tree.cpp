@@ -13,7 +13,7 @@ struct TreeNode
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-class Solution
+class SolutionIterative
 {
 public:
     TreeNode *invertTree(TreeNode *root)
@@ -39,6 +39,22 @@ public:
                     q.push(current->left);
             }
         }
+        return root;
+    }
+};
+
+class SolutionRecursive
+{
+public:
+    TreeNode *invertTree(TreeNode *root)
+    {
+        if (root == nullptr)
+            return root;
+        TreeNode *aux = root->right;
+        root->right = root->left;
+        root->left = aux;
+        invertTree(root->left);
+        invertTree(root->right);
         return root;
     }
 };
