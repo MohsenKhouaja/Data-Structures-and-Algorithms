@@ -40,13 +40,3 @@ public:
         return mx;
     }
 };
-
-/*
-AABABBA
-
-Input: s = "AABABBB", k = 1
-Output: 5
-
-
-itha ken r-l +1 - k > occ
-*/
